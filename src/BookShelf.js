@@ -11,6 +11,16 @@ class BookShelf extends Component {
 
   render() {
     const { books, onUpdateBookShelf } = this.props
+    const shelves = [{
+      'index': 'currentlyReading',
+      'title': 'Currently Reading'
+    }, {
+      'index': 'wantToRead',
+      'title': 'Want to Read'
+    }, {
+      'index': 'read',
+      'title': 'Read'
+    }]
 
     console.log(books);
 
@@ -21,57 +31,25 @@ class BookShelf extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Currently Reading</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {books
-                    .filter(book => book.shelf === 'currentlyReading')
-                    .map(book => (
-                      <li key={book.id}>
-                        <Book
-                          book={book}
-                          onUpdateBookShelf={onUpdateBookShelf}
-                        />
-                      </li>
-                  ))}
-                </ol>
+            {shelves.map(shelf => (
+              <div className="bookshelf" key={shelf.index}>
+                <h2 className="bookshelf-title">{shelf.title}</h2>
+                <div className="bookshelf-books">
+                  <ol className="books-grid">
+                    {books
+                      .filter(book => book.shelf === shelf.index)
+                      .map(book => (
+                        <li key={book.id}>
+                          <Book
+                            book={book}
+                            onUpdateBookShelf={onUpdateBookShelf}
+                          />
+                        </li>
+                    ))}
+                  </ol>
+                </div>
               </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Want to Read</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                  {books
-                    .filter(book => book.shelf === 'wantToRead')
-                    .map(book => (
-                      <li key={book.id}>
-                        <Book
-                          book={book}
-                          onUpdateBookShelf={onUpdateBookShelf}
-                        />
-                      </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Read</h2>
-              <div className="bookshelf-books">
-                <ol className="books-grid">
-                {books
-                    .filter(book => book.shelf === 'read')
-                    .map(book => (
-                      <li key={book.id}>
-                        <Book
-                          book={book}
-                          onUpdateBookShelf={onUpdateBookShelf}
-                        />
-                      </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <div className="open-search">
