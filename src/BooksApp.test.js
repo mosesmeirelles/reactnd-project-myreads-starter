@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import BooksApp from './App'
+import BooksApp from './BooksApp'
 
 /**
  This course is not designed to teach Test Driven Development.
