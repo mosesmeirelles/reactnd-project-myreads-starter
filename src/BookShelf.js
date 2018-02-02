@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 class BookShelf extends Component {
   render() {
-    const { books } = this.props
+    const { books, onUpdateBookShelf } = this.props
 
     console.log(books);
 
@@ -30,7 +30,7 @@ class BookShelf extends Component {
                               backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
                             </div>
                             <div className="book-shelf-changer">
-                              <select>
+                              <select value={book.shelf} onChange={event => onUpdateBookShelf(book, event.target.value)}>
                                 <option value="none" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
@@ -63,7 +63,7 @@ class BookShelf extends Component {
                               backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
                             </div>
                             <div className="book-shelf-changer">
-                              <select>
+                            <select value={book.shelf} onChange={event => onUpdateBookShelf(book, event.target.value)}>
                                 <option value="none" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
@@ -96,7 +96,7 @@ class BookShelf extends Component {
                               backgroundImage: `url(${book.imageLinks.thumbnail})` }}>
                             </div>
                             <div className="book-shelf-changer">
-                              <select>
+                            <select value={book.shelf} onChange={event => onUpdateBookShelf(book, event.target.value)}>
                                 <option value="none" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
