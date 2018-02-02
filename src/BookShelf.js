@@ -22,8 +22,6 @@ class BookShelf extends Component {
       'title': 'Read'
     }]
 
-    console.log(books);
-
     return (
       <div className="list-books">
         <div className="list-books-title">
