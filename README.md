@@ -11,7 +11,7 @@
   #### How the components interact with each other:
 
 ```
-APP.js
+BooksApp.js
 └───BookShelf.js
 └───SearchBooks.js
 └───Book.js
