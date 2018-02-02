@@ -19,8 +19,12 @@ class BooksApp extends React.Component {
   changeBookShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       book.shelf = shelf
+
+      // Instead of update the book, I just remove and set again the object
       this.setState(state => ({
-        books: state.books.filter(oldBook => oldBook.id !== book.id).concat([ book ])
+        books: state.books
+                      .filter(oldBook => oldBook.id !== book.id)
+                      .concat([ book ])
       }))
     })
   }
