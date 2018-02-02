@@ -20,7 +20,7 @@ class BooksApp extends React.Component {
     BooksAPI.update(book, shelf).then(() => {
       book.shelf = shelf
 
-      // Instead of update the book, I just remove and set again the object
+      // Instead of update the book, I just remove and adds the object again
       this.setState(state => ({
         books: state.books
                       .filter(oldBook => oldBook.id !== book.id)
